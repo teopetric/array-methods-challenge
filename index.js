@@ -66,6 +66,21 @@ console.log(calculateArea(demoArr));
 3. Write a function that returns a subset of the above array where the elements have an area smaller or equal to 100
 */
 
+function filterArr(array) {
+	const areas = calculateArea(demoArr);
+	var aux = [],
+		j = 0;
+
+	for (var i = 0; i < array.length; i++) {
+		if (areas[i] <= 100) {
+			aux.splice(j, 0, areas[i]);
+			j++;
+		}
+	}
+
+	return aux;
+}
+
 console.log(filterArr(demoArr));
 
 /*
