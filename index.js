@@ -19,6 +19,20 @@ console.log("Typecast: ", typeCastAndAdd(strArr));
 1. Implement a function that receives an array of objects and a key name and returns an array with all the values corresponding to the key of the objects in the array.
 */
 
+function pluck(array, color) {
+	var aux = [],
+		j = 0;
+
+	for (var i = 0; i < array.length; i++) {
+		if (array[i].color === color) {
+			aux.splice(j, 0, array[i]);
+			j++;
+		}
+	}
+
+	return aux;
+}
+
 const demoArr = [
 	{ id: 1, color: "red", height: 15, width: 20, distance: 10 },
 	{ id: 2, color: "green", height: 5, width: 30, distance: 15 },
