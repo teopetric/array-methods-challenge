@@ -48,6 +48,18 @@ console.log(pluck(demoArr, "color")); // => ['red', 'green', 'turqoize' .......]
 2. Implement a function that returns the area of all elements in the above array, area = height * width.
 */
 
+function calculateArea(array) {
+	var aux = [],
+		j = 0;
+
+	for (var i = 0; i < array.length; i++) {
+		aux.splice(j, 0, array[i].height * array[i].width);
+		j++;
+	}
+
+	return aux;
+}
+
 console.log(calculateArea(demoArr));
 
 /*
