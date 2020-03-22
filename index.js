@@ -135,15 +135,16 @@ console.log(findColor(demoArr, "crimson"));
 */
 
 function areasAreBigger(array, value) {
-	let areas = calculateArea(array), OK = 0;
+	let areas = calculateArea(array),
+		OK = 0;
 
-	for(var i = 0; i < areas.length; i++) {
-		if(areas[i] < value) {
+	for (var i = 0; i < areas.length; i++) {
+		if (areas[i] < value) {
 			OK = 1;
 			return false;
-		} 
+		}
 	}
-	
+
 	return true;
 }
 
@@ -152,6 +153,17 @@ console.log(areasAreBigger(demoArr, 10));
 /*
 7. Write a function that returns true if at least one of the array elements has the color 'green';
 */
+
+function atLeastOneIsOfColor(array, color) {
+	for(var i = 0; i < array.length; i++) {
+		if(array[i].color === color) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 console.log(atLeastOneIsOfColor(demoArr, "balarie"));
 
 /*
