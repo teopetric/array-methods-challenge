@@ -90,17 +90,20 @@ If it returns true, the element will not be included by the parent function in t
 If returns false it will be included.
 */
 
-function reject (array, iterator) {
-	var aux = [], j = 0;
+function reject(array, iterator) {
+	var aux = [],
+		j = 0;
+		
 	let it = iterator.next();
-	while(it.value != undefined ) {
-		if(it.value.height < 10) {
+	while (it.value != undefined) {
+		if (it.value.height < 10) {
 			aux.splice(j, 0, it.value);
 			j++;
 		}
 		it = iterator.next();
 	}
-    return aux;
+
+	return aux;
 }
 
 let iterator = demoArr[Symbol.iterator]();
@@ -110,6 +113,21 @@ console.log(reject(demoArr, iterator)); // return an array of objects with heigh
 /*
 5. Write a function that return the element with the color 'crimson'
 */
+
+function findColor(array, color) {
+	var aux = [],
+		j = 0;
+
+	for (var i = 0; i < array.length; i++) {
+		if (array[i].color === color) {
+			aux.splice(j, 0, array[i]);
+			j++;
+		}
+	}
+
+	return aux;
+}
+
 console.log(findColor(demoArr, "crimson"));
 
 /*
