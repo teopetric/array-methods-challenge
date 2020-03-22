@@ -190,8 +190,8 @@ function noColors(array) {
 	let colors = array.map(value => value.color);
 	let noOccurs = {};
 
-	for(var i = 0; i < colors.length; i++) {
-		if(!noOccurs[colors[i]]) {
+	for (var i = 0; i < colors.length; i++) {
+		if (!noOccurs[colors[i]]) {
 			noOccurs[colors[i]] = 0;
 		}
 		++noOccurs[colors[i]];
@@ -205,6 +205,23 @@ console.log("Number of colors: ", noColors(demoArr));
 /*
 10. Write a function that returns an array with all elements having a unique color. Any element after the first one that has a color that would repeat is not included in the array.
 */
+
+function uniqueColors(array) {
+	let aux = [],
+		j = 0;
+	let noOccurs = noColors(array);
+	
+	for (var i = 0; i < array.length; i++) {
+		color = array[i].color;
+		if (noOccurs[color] === 1) {
+			aux.splice(j, 0, array[i]);
+			j++;
+		}
+	}
+
+	return aux;
+}
+
 console.log("Unique Colors: ", uniqueColors(demoArr));
 
 /*
