@@ -93,7 +93,7 @@ If returns false it will be included.
 function reject(array, iterator) {
 	var aux = [],
 		j = 0;
-		
+
 	let it = iterator.next();
 	while (it.value != undefined) {
 		if (it.value.height < 10) {
@@ -133,6 +133,20 @@ console.log(findColor(demoArr, "crimson"));
 /*
 6. Write a function that returns true if all elements in the array have the area > = 10, false otherwise.
 */
+
+function areasAreBigger(array, value) {
+	let areas = calculateArea(array), OK = 0;
+
+	for(var i = 0; i < areas.length; i++) {
+		if(areas[i] < value) {
+			OK = 1;
+			return false;
+		} 
+	}
+	
+	return true;
+}
+
 console.log(areasAreBigger(demoArr, 10));
 
 /*
