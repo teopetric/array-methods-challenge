@@ -90,6 +90,21 @@ If it returns true, the element will not be included by the parent function in t
 If returns false it will be included.
 */
 
+function reject (array, iterator) {
+	var aux = [], j = 0;
+	let it = iterator.next();
+	while(it.value != undefined ) {
+		if(it.value.height < 10) {
+			aux.splice(j, 0, it.value);
+			j++;
+		}
+		it = iterator.next();
+	}
+    return aux;
+}
+
+let iterator = demoArr[Symbol.iterator]();
+
 console.log(reject(demoArr, iterator)); // return an array of objects with height < 10
 
 /*
