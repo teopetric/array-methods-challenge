@@ -155,8 +155,8 @@ console.log(areasAreBigger(demoArr, 10));
 */
 
 function atLeastOneIsOfColor(array, color) {
-	for(var i = 0; i < array.length; i++) {
-		if(array[i].color === color) {
+	for (var i = 0; i < array.length; i++) {
+		if (array[i].color === color) {
 			return true;
 		}
 	}
@@ -169,6 +169,17 @@ console.log(atLeastOneIsOfColor(demoArr, "balarie"));
 /*
 8. Write a function that returns the total distance (the sum of the element distances)
 */
+
+function sumOfDistances(array) {
+	let sum = 0;
+
+	for (var i = 0; i < array.length; i++) {
+		sum += array[i].distance;
+	}
+
+	return sum;
+}
+
 console.log("Sum of distances: ", sumOfDistances(demoArr));
 
 /*
