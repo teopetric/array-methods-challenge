@@ -210,7 +210,7 @@ function uniqueColors(array) {
 	let aux = [],
 		j = 0;
 	let noOccurs = noColors(array);
-	
+
 	for (var i = 0; i < array.length; i++) {
 		color = array[i].color;
 		if (noOccurs[color] === 1) {
@@ -227,8 +227,13 @@ console.log("Unique Colors: ", uniqueColors(demoArr));
 /*
 11. Write a function which inverts two numbers.
 */
+
 let a = 5,
 	b = 8;
+
+a = a + b;
+b = a - b;
+a = a - b;
 
 console.log("A:", a, "B:", b);
 
