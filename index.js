@@ -3,13 +3,11 @@
 0. Write a function that receives the array below as parameters and returns a new array which has all the elements added with 2
 */
 
-function typeCastAndAdd(array) {
-	for (var i = 0; i < array.length; i++) {
-		array[i] = parseFloat(array[i]) + 2;
-	}
-
-	return array;
-}
+const typeCastAndAdd = (stringArray) => {
+    return stringArray.map((element) => {
+        return (parseFloat(element) + 2).toString();
+    })
+};
 
 var strArr = ["13", "2", "34", "14", "5", "86", "3.46"];
 
@@ -19,18 +17,9 @@ console.log("Typecast: ", typeCastAndAdd(strArr));
 1. Implement a function that receives an array of objects and a key name and returns an array with all the values corresponding to the key of the objects in the array.
 */
 
-function pluck(array, color) {
-	var aux = [],
-		j = 0;
-
-	for (var i = 0; i < array.length; i++) {
-		if (array[i].color === color) {
-			aux.splice(j, 0, array[i]);
-			j++;
-		}
-	}
-
-	return aux;
+function pluck(arr, key) {
+    const result = arr.map(el => el[key]);
+    return result;
 }
 
 const demoArr = [
@@ -49,15 +38,7 @@ console.log(pluck(demoArr, "color")); // => ['red', 'green', 'turqoize' .......]
 */
 
 function calculateArea(array) {
-	var aux = [],
-		j = 0;
-
-	for (var i = 0; i < array.length; i++) {
-		aux.splice(j, 0, array[i].height * array[i].width);
-		j++;
-	}
-
-	return aux;
+    return array.map(element => element.height * element.width)
 }
 
 console.log(calculateArea(demoArr));
@@ -66,19 +47,8 @@ console.log(calculateArea(demoArr));
 3. Write a function that returns a subset of the above array where the elements have an area smaller or equal to 100
 */
 
-function filterArr(array) {
-	const areas = calculateArea(demoArr);
-	var aux = [],
-		j = 0;
-
-	for (var i = 0; i < array.length; i++) {
-		if (areas[i] <= 100) {
-			aux.splice(j, 0, areas[i]);
-			j++;
-		}
-	}
-
-	return aux;
+const filterArr = arr => {
+    return arr.filter(item => (item.height * item.width) <= 100)
 }
 
 console.log(filterArr(demoArr));
@@ -90,23 +60,16 @@ If it returns true, the element will not be included by the parent function in t
 If returns false it will be included.
 */
 
-function reject(array, iterator) {
-	var aux = [],
-		j = 0;
-
-	let it = iterator.next();
-	while (it.value != undefined) {
-		if (it.value.height < 10) {
-			aux.splice(j, 0, it.value);
-			j++;
-		}
-		it = iterator.next();
-	}
-
-	return aux;
+const reject = (array, callback) => {
+    return array.filter((element) => callback(element))
 }
 
-let iterator = demoArr[Symbol.iterator]();
+const iterator = (element) => {
+    if (element.height < 10) {
+        return true;
+    }
+    return false;
+}
 
 console.log(reject(demoArr, iterator)); // return an array of objects with height < 10
 
@@ -114,19 +77,7 @@ console.log(reject(demoArr, iterator)); // return an array of objects with heigh
 5. Write a function that return the element with the color 'crimson'
 */
 
-function findColor(array, color) {
-	var aux = [],
-		j = 0;
-
-	for (var i = 0; i < array.length; i++) {
-		if (array[i].color === color) {
-			aux.splice(j, 0, array[i]);
-			j++;
-		}
-	}
-
-	return aux;
-}
+const findColor = (arr, color) => arr.filter(element => element.color === color);
 
 console.log(findColor(demoArr, "crimson"));
 
@@ -134,18 +85,16 @@ console.log(findColor(demoArr, "crimson"));
 6. Write a function that returns true if all elements in the array have the area > = 10, false otherwise.
 */
 
-function areasAreBigger(array, value) {
-	let areas = calculateArea(array),
-		OK = 0;
+const areasAreBigger = (arr, criteria) => {
+    const areas = calculateArea(arr);
 
-	for (var i = 0; i < areas.length; i++) {
-		if (areas[i] < value) {
-			OK = 1;
-			return false;
-		}
-	}
-
-	return true;
+    return areas.every((element) => {
+        if (element >= criteria) {
+            return true;
+        } else {
+            return false;
+        }
+    })
 }
 
 console.log(areasAreBigger(demoArr, 10));
@@ -154,14 +103,8 @@ console.log(areasAreBigger(demoArr, 10));
 7. Write a function that returns true if at least one of the array elements has the color 'green';
 */
 
-function atLeastOneIsOfColor(array, color) {
-	for (var i = 0; i < array.length; i++) {
-		if (array[i].color === color) {
-			return true;
-		}
-	}
-
-	return false;
+function atLeastOneIsOfColor(arr, color) {
+    return arr.some((element) => element.color === color);
 }
 
 console.log(atLeastOneIsOfColor(demoArr, "balarie"));
@@ -170,14 +113,10 @@ console.log(atLeastOneIsOfColor(demoArr, "balarie"));
 8. Write a function that returns the total distance (the sum of the element distances)
 */
 
-function sumOfDistances(array) {
-	let sum = 0;
-
-	for (var i = 0; i < array.length; i++) {
-		sum += array[i].distance;
-	}
-
-	return sum;
+const sumOfDistances = (array) => {
+    return array.reduce((acc, { distance }) => {
+        return acc + distance;
+    }, 0);
 }
 
 console.log("Sum of distances: ", sumOfDistances(demoArr));
