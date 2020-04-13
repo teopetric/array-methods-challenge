@@ -146,15 +146,13 @@ console.log("Number of colors: ", noColors(demoArr));
 */
 
 function uniqueColors(array) {
-	let aux = [],
-		j = 0;
+	let aux = [];
 	let noOccurs = noColors(array);
 
 	for (var i = 0; i < array.length; i++) {
 		color = array[i].color;
 		if (noOccurs[color] === 1) {
-			aux.splice(j, 0, array[i]);
-			j++;
+			aux.push(array[i]);
 		}
 	}
 
